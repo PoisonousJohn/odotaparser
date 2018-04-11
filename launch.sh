@@ -5,6 +5,5 @@ wget -O replay.dem.bz2 $REPLAY_FILE
 echo "Extracting"
 bzip2 -d replay.dem.bz2
 curl localhost:5600 --data-binary "@replay.dem" > export.json
-export MATCH_ID=10
 python insert.py
 
