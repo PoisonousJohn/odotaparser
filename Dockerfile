@@ -8,4 +8,4 @@ ADD launch.sh launch.sh
 ADD insert.py insert.py
 RUN chmod +x launch.sh
 
-CMD ['/bin/sh', '-c', 'launch.sh']
+CMD ["/bin/bash", "launch.sh"]
