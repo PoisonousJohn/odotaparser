@@ -7,6 +7,7 @@ aria2c -j 10 -o replay.dem.bz2 $REPLAY_FILE
 echo "Extracting"
 bzip2 -d replay.dem.bz2
 curl localhost:5600 --data-binary "@replay.dem" > export.json
+cat export.json | node ./processors/createParsedDataBlob.js > export2.json
 echo "Getting upload url"
 UPLOAD_URL=`curl $URL`
 # remove quotes from curl output
@@ -14,5 +15,5 @@ temp="${UPLOAD_URL%\"}"
 UPLOAD_URL="${temp#\"}"
 echo "Upload url: $UPLOAD_URL"
 echo "Uploading file"
-curl -H "Content-type: application/octet-stream" -H "x-ms-blob-type: BlockBlob" -X PUT -d @export.json "$UPLOAD_URL"
+curl -H "Content-type: application/octet-stream" -H "x-ms-blob-type: BlockBlob" -X PUT -d @export2.json "$UPLOAD_URL"
 echo "All done"

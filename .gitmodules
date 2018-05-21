@@ -1,0 +1,6 @@
+[submodule "core"]
+	path = core
+	url = https://github.com/odota/core
+[submodule "parser"]
+	path = parser
+	url = https://github.com/odota/parser
